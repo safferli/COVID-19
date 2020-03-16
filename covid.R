@@ -9,7 +9,7 @@ ll <- c("Confirmed", "Recovered", "Deaths")
 ## get data
 
 map(ll, function(nn){
-  assign(nn, read_csv(paste0(base.url, "time_series_19-covid-", nn, ".csv")) %>% arrange(`Country/Region`, `Province/State`), envir = .GlobalEnv)
+    assign(nn, read_csv(paste0(base.url, "time_series_19-covid-", nn, ".csv")), envir = .GlobalEnv)
   })
 
 ## start analysis
