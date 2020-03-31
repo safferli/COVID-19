@@ -12,6 +12,9 @@ map(ll, function(nn){
     assign(nn, read_csv(paste0(base.url, "time_series_covid19_", nn, "_global.csv")), envir = .GlobalEnv)
   })
 
+# country ISO lookup table
+country.lookup <- read_csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/UID_ISO_FIPS_LookUp_Table.csv")
+
 ## start analysis
 
 f.pick.and.munch <- function(data, countries){
