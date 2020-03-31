@@ -4,12 +4,12 @@ library(tidyverse)
 # data from Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)
 # https://github.com/CSSEGISandData/COVID-19
 base.url <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/"
-ll <- c("Confirmed", "Recovered", "Deaths")
+ll <- c("confirmed", "recovered", "deaths")
 
 ## get data
 
 map(ll, function(nn){
-    assign(nn, read_csv(paste0(base.url, "time_series_19-covid-", nn, ".csv")), envir = .GlobalEnv)
+    assign(nn, read_csv(paste0(base.url, "time_series_covid19_", nn, "_global.csv")), envir = .GlobalEnv)
   })
 
 ## start analysis
@@ -23,7 +23,7 @@ f.pick.and.munch <- function(data, countries){
 }
 
 
-dta <- Confirmed %>% 
+dta <- confirmed %>% 
   rename(
     province = `Province/State`, 
     country = `Country/Region`
